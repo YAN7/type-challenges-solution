@@ -1,10 +1,16 @@
 /**
- * * keyof 用来处理联合类型,获取联合类型的每一项
+ * * keyof 遍历某种类型的属性，并通过keyof操作符提取其属性的名称
+ * * extends 1. 表示继承/拓展的含义 2. 表示约束的含义 3. 表示分配的含义
+ * * ts中的[]表示该类型是一个整体
  */
 
 type MyPick<T, K extends keyof T> = {
 	[key in K]: T[key]
 }
+
+type tt = 'title' | 'completed' | 'invalid'
+
+type a = keyof tt
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
@@ -32,11 +38,9 @@ interface Expected2 {
 }
 
 
-
 /* _____________ Further Steps _____________ */
 /*
   > Share your solutions: https://tsch.js.org/4/answer
   > View solutions: https://tsch.js.org/4/solutions
   > More Challenges: https://tsch.js.org
 */
-
