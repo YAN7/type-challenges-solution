@@ -1,41 +1,13 @@
-/*
-  898 - Includes
-  -------
-  by null (@kynefuk) #easy #array
-  
-  ### Question
-  
-  Implement the JavaScript `Array.includes` function in the type system. A type takes the two arguments. The output should be a boolean `true` or `false`.
-  
-  For example:
-  
-  ```ts
-  type isPillarMen = Includes<['Kars', 'Esidisi', 'Wamuu', 'Santana'], 'Dio'> // expected to be `false`
-  ```
-  
-  > View on GitHub: https://tsch.js.org/898
-*/
-
-
 /* _____________ Your Code Here _____________ */
 
 type Includes<T extends readonly any[], U> = U extends T[number] ? true : false
 
+type a = ['Kars', 'Esidisi', 'Wamuu', 'Santana']
+
+type b = a[number]
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
-
-// type a = [{}]
-
-type b = Includes<[{}], { a: 'A' }>
-
-const foo = (arg1: string, arg2: number): void => {}
-
-type a = typeof foo
-
-type MyParameters<T extends (...args: any[]) => any> = any
-
-type re = MyParameters<a>
 
 type cases = [
   Expect<Equal<Includes<['Kars', 'Esidisi', 'Wamuu', 'Santana'], 'Kars'>, true>>,
@@ -55,8 +27,6 @@ type cases = [
   Expect<Equal<Includes<[null], undefined>, false>>,
   Expect<Equal<Includes<[undefined], null>, false>>,
 ]
-
-
 
 /* _____________ Further Steps _____________ */
 /*
