@@ -1,10 +1,12 @@
-/* _____________ Your Code Here _____________ */
+/**
+ * * 两个关键点 一个是 infer推断拿到T数组类型的第一个元素,一个是递归使用Includes已达到T中的每个元素逐个与U比较的目的
+ */
 
-type Includes<T extends readonly any[], U> = U extends T[number] ? true : false
+type Includes<T extends readonly any[], U> = T extends [infer First, ...infer Rest ] ? Equal<First, U> extends true ? true : Includes<Rest, U> : false
 
-type a = ['Kars', 'Esidisi', 'Wamuu', 'Santana']
+type a = { a: 'A' } extends {} ? string : number
 
-type b = a[number]
+// type b = a[number]
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
