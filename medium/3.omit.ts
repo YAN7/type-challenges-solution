@@ -1,41 +1,11 @@
-/*
-  3 - Omit
-  -------
-  by Anthony Fu (@antfu) #medium #union #built-in
-  
-  ### Question
-  
-  Implement the built-in `Omit<T, K>` generic without using it.
-  
-  Constructs a type by picking all properties from `T` and then removing `K`
-  
-  For example
-  
-  ```ts
-  interface Todo {
-    title: string
-    description: string
-    completed: boolean
-  }
-  
-  type TodoPreview = MyOmit<Todo, 'description' | 'title'>
-  
-  const todo: TodoPreview = {
-    completed: false,
-  }
-  ```
-  
-  > View on GitHub: https://tsch.js.org/3
-*/
+/**
+ * * Exclude<T, U> 操作联合类型,Exclude from T those types that are assignable to U,排除
+ */
 
-
-/* _____________ Your Code Here _____________ */
-
-type MyOmit<T, K> = {
-  [key in Exclude<keyof T, K>]: T[key]
+type MyOmit<T, K extends keyof T> ={
+	[key in Exclude<keyof T, K>]: T[key]
 }
 
-type a = MyOmit<Todo, 'description'>
 
 /* _____________ Test Cases _____________ */
 import type { Equal, Expect } from '@type-challenges/utils'
