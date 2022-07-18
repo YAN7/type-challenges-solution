@@ -5,32 +5,35 @@
 /* _____________ Your Code Here _____________ */
 
 type Merge<F, S> = {
-	[key in keyof F | keyof S]: key extends keyof S ? S[key] : key extends keyof F ? F[key] : never
-}
+	[key in keyof F | keyof S]: key extends keyof S ? S[key] : key extends keyof F ? F[key] : never;
+};
 
-type a = Merge<Foo, Bar>
+type a = Merge<Foo, Bar>;
 
 /* _____________ Test Cases _____________ */
-import type { Equal, Expect } from '@type-challenges/utils'
+import type { Equal, Expect } from '@type-challenges/utils';
 
 type Foo = {
-  a: number
-  b: string
-}
+	a: number;
+	b: string;
+};
 type Bar = {
-  b: number
-  c: boolean
-}
+	b: number;
+	c: boolean;
+};
 
 type cases = [
-  Expect<Equal<Merge<Foo, Bar>, {
-    a: number
-    b: number
-    c: boolean
-  }>>,
-]
-
-
+	Expect<
+		Equal<
+			Merge<Foo, Bar>,
+			{
+				a: number;
+				b: number;
+				c: boolean;
+			}
+		>
+	>
+];
 
 /* _____________ Further Steps _____________ */
 /*
@@ -38,4 +41,3 @@ type cases = [
   > View solutions: https://tsch.js.org/599/solutions
   > More Challenges: https://tsch.js.org
 */
-
