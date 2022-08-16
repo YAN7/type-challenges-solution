@@ -5,3 +5,5 @@ type item1 = ArrayElementType<number[]>;
 type item2 = ArrayElementType<{ name: string }>;
 
 type item3 = ArrayElementType<[number, string]>;
+
+type item4 = string;
